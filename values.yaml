@@ -1,0 +1,8 @@
+apiVersion: helm.sh/v1beta1
+kind: Values
+metadata:
+  name: my-values
+data:
+  foo: bar
+  baz:
+    qux: 2

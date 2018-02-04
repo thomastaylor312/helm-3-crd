@@ -1,0 +1,54 @@
+---
+apiVersion: helm.sh/v1beta1
+kind: Lifecycle
+metadata:
+  name: canary
+spec:
+  service: canary-controller:9001
+  tlsAuth:
+    secretName: mtls-cert-secret
+  # More stuff here
+---
+apiVersion: helm.sh/v1beta1
+kind: Lifecycle
+metadata:
+  name: blue-green
+spec:
+  service: blue-green-controller:9001
+  tlsAuth:
+    secretName: mtls-cert-secret
+  # More stuff here
+---
+apiVersion: helm.sh/v1beta1
+kind: Lifecycle
+metadata:
+  # A Lifecycle that would take the place of pre-* hooks in Helm 2
+  name: pre-deploy
+spec:
+  service: pre-deploy-controller:9001
+  tlsAuth:
+    secretName: mtls-cert-secret
+  # More stuff here
+---
+apiVersion: helm.sh/v1beta1
+kind: Lifecycle
+metadata:
+  # A Lifecycle that would take the place of post-* hooks in Helm 2
+  name: post-deploy
+spec:
+  service: post-deploy-controller:9001
+  tlsAuth:
+    secretName: mtls-cert-secret
+  # More stuff here
+---
+apiVersion: helm.sh/v1beta1
+kind: Lifecycle
+metadata:
+  # A Lifecycle that would replace the current `--wait` functionality in Helm 2
+  # and would ensure that all created resources are ready, bound, etc.
+  name: running
+spec:
+  service: running-controller:9001
+  tlsAuth:
+    secretName: mtls-cert-secret
+  # More stuff here

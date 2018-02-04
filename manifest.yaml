@@ -1,0 +1,9 @@
+apiVersion: helm.sh/v1beta1
+kind: Manifest
+metadata:
+  name: my-manfest
+spec:
+  data: |
+    # All of the manifests should be smashed together and compressed before being
+    # sent. This is not used for diffing, but as the starting point for rendering
+    # a manifest and deploying the objects

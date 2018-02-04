@@ -1,0 +1,34 @@
+apiVersion: helm.sh/v1beta1
+kind: Release
+metadata:
+  name: my-release
+spec:
+  manifest:
+    manifestName: my-manifest
+  values:
+    valuesName: my-values
+  secret:
+    secretName: my-secret
+  # Just like with RBAC and PSPs, the access you give to the service account
+  # has to have the proper permissions to create things
+  serviceAccount: helm
+  # A list of release dependencies that should exist. This can return a validation
+  # error if one or more of the dependencies does not exist
+  dependencies:
+    - name: my-kafka-release
+      namespace: foo
+  lifecycle:
+    - name: pre-deploy
+      timeout: 120
+      # config objects will be simple map[string]interface{} that specify
+      # configuration for the given lifecycle
+      config:
+        # this is just an example, but this hook could be configured to check a
+        # specific pod for success
+        podName: db-bootstrap
+    - name: running
+      timeout: 300
+status:
+  phase: Deployed
+  message: "my-release deployed successfully"
+  # Possibly needs more stuff here
