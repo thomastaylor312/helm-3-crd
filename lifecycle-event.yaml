@@ -1,0 +1,36 @@
+---
+apiVersion: helm.sh/v1beta1
+kind: LifecycleEvent
+metadata:
+  name: my-release-pre-deploy
+  labels:
+    helm-lifecycle-event: predeploy
+spec:
+  timeout: 120
+  # config objects will be simple map[string]interface{} that specify
+  # configuration for the given lifecycle
+  config:
+    # this is just an example, but this hook could be configured to check a
+    # specific pod for success
+    podName: db-bootstrap
+status:
+  # Will be set to true if there was an error with `message` containing more info
+  error: false
+  # Will be marked as "Running" if in progress, "Pending" if it hasn't been handled
+  # yet, and "Error" if it is in an error state
+  phase: "Completed"
+  message: "Pre-deploy pod 'db-boostrap' exited successfully"
+---
+apiVersion: helm.sh/v1beta1
+kind: LifecycleEvent
+metadata:
+  name: my-release-running
+  labels:
+    helm-lifecycle-event: running
+spec:
+  timeout: 300
+  config: {}
+status:
+  error: false
+  phase: "Running"
+  message: "Waiting for 3 resources to be in ready state"
