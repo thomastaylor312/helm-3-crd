@@ -3,7 +3,8 @@ kind: ReleaseAudit
 metadata:
   name: my-release.v1
 status:
-  releasedTimestamp: "2016-12-19T16:39:57-08:00"
+  createdTimestamp: "2016-12-19T16:39:57-08:00"
+  ​supersededTimestamp: null
   # The last known status of the release at this version
   lastStatus:
     phase: Deployed

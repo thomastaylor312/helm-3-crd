@@ -3,6 +3,18 @@ kind: Manifest
 metadata:
   name: my-manfest
 spec:
+  chart:
+    name: consul
+    home: https://github.com/foo/bar
+    version: 1.2.1
+    appVersion: 1.0.0
+    description: A test chart!
+    icon: https://my.icon.location
+    sources:
+    - https://github.com/foo/bar
+    maintainers:
+    - name: thomastaylor312
+      email: taylor@oftaylor.com
   data: |
     # All of the manifests should be smashed together and compressed before being
     # sent. This is not used for diffing, but as the starting point for rendering
