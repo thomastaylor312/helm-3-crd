@@ -23,7 +23,7 @@ current users of Helm 2 face and that can be addressed by this proposal.
   extending Kubernetes
 - Security is difficult and not built in by default. Furthermore, there is no
   easy way to use the current RBAC model for authorization.
-- The current method for storing releases is hard to read and understand and
+- The current method for storing releases is hard to read/understand and
   all parts of the release are stored together
 
 ## Overview
