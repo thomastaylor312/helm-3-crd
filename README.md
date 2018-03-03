@@ -71,7 +71,7 @@ and link it to the question.
   for custom storage backends but would be more difficult to program (and definitely
   harder for users to install). It may be the more robust option~ Just a controller
   for ease of use
-- ~Should rendering take place locally or in the controller?~ In the controller
+- ~Should rendering take place locally or in the controller?~ locally
 - How should we handle releases that are spread across multiple namespaces?
   Possibly a `ClusterRelease` object that is non-namespaced
 - Should the controller enforce the given manifest again if changes are detected
